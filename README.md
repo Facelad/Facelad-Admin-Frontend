@@ -45,6 +45,40 @@ Seguir estas recomendaciones evitará errores difíciles de reproducir y mantend
 
   ## Running the code
 
+## CI/CD y flujos de ramas
+
+- **main**: Cada push o pull request a esta rama ejecuta lint y test automáticos (GitHub Actions). Solo si todo pasa, Vercel despliega automáticamente a producción.
+- **develop**: Cada push o pull request ejecuta lint y test automáticos (GitHub Actions). Vercel solo genera previews, nunca despliega a producción.
+
+### Comandos disponibles (en `/facelad`)
+
+> **Nota importante:**
+>
+> Antes de ejecutar cualquier comando (`npm run lint`, `npm run test`, etc.) dentro de la carpeta `/facelad`, asegúrate de haber corrido:
+>
+> ```sh
+> cd facelad
+> npm install
+> ```
+>
+> Esto instalará todas las dependencias necesarias para que los scripts funcionen correctamente.
+
+- `npm run lint`: Ejecuta eslint sobre todo el proyecto.
+- `npm run test`: Ejecuta los tests con Vitest.
+- `npm run coverage`: Ejecuta los tests y muestra el reporte de cobertura.
+
+### Archivos de configuración
+
+- `.github/workflows/ci-main.yml`: CI para rama main.
+- `.github/workflows/ci-develop.yml`: CI para rama develop.
+
+### Recomendaciones
+
+- Solo hacer merge a main si develop está estable y pasa todos los checks.
+- Si un workflow falla, revisa los logs en GitHub Actions antes de hacer merge.
+
+El flujo asegura calidad y despliegues controlados en producción.
+
   Run `npm i` to install the dependencies.
 
   Run `npm run dev` to start the development server.

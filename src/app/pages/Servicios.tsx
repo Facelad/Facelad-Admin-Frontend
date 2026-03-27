@@ -259,7 +259,7 @@ export function Servicios() {
                 <Label htmlFor="tipoServicio">Tipo de Servicio</Label>
                 <Select
                   value={formData.tipoServicio}
-                  onValueChange={(value: any) =>
+                  onValueChange={(value: unknown) =>
                     setFormData({ ...formData, tipoServicio: value })
                   }
                 >
@@ -305,7 +305,7 @@ export function Servicios() {
                 <Label htmlFor="estado">Estado</Label>
                 <Select
                   value={formData.estado}
-                  onValueChange={(value: any) =>
+                  onValueChange={(value: unknown) =>
                     setFormData({ ...formData, estado: value })
                   }
                 >

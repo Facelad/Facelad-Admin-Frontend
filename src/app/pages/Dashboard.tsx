@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
 import {
   Users,
@@ -8,20 +8,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { mockClientes, mockServicios, mockCobros } from "../data/mockData";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  LineChart,
-  Line,
-  PieChart,
-  Pie,
-  Cell,
-} from "recharts";
+// ...gráficos de recharts no usados
 
 const COLORS = ["#54EBA3", "#3B82F6", "#F59E0B", "#EF4444"];
 
@@ -157,7 +144,7 @@ export function Dashboard() {
                   dataKey="ingresos"
                   stroke="#54EBA3"
                   strokeWidth={2}
-                  dot={{ key: (entry: any, index: number) => `dot-${entry.id}` }}
+                  dot={{ key: (entry: unknown) => `dot-${(entry as { id: string }).id}` }}
                 />
               </LineChart>
             </ResponsiveContainer>

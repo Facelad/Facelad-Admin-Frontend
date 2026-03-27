@@ -20,7 +20,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 import { mockCobros } from "../data/mockData";
 import { Cobro } from "../types";
-import { CheckCircle, XCircle, Clock, AlertTriangle, Eye } from "lucide-react";
+import { CheckCircle, Clock, AlertTriangle, Eye } from "lucide-react";
 import { toast } from "sonner";
 
 export function Cobranza() {
@@ -74,12 +74,12 @@ export function Cobranza() {
     handleCloseDialog();
   };
 
-  const handleMarcarVencido = (id: string) => {
-    setCobros(
-      cobros.map((c) => (c.id === id ? { ...c, estado: "vencido" as const } : c))
-    );
-    toast.warning("Cobro marcado como vencido");
-  };
+  // const handleMarcarVencido = (id: string) => {
+  //   setCobros(
+  //     cobros.map((c) => (c.id === id ? { ...c, estado: "vencido" as const } : c))
+  //   );
+  //   toast.warning("Cobro marcado como vencido");
+  // };
 
   const CobroCard = ({ cobro }: { cobro: Cobro }) => (
     <div className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
