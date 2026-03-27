@@ -234,7 +234,7 @@ export function Plantillas() {
                 <Label htmlFor="frecuencia">Frecuencia</Label>
                 <Select
                   value={formData.frecuencia}
-                  onValueChange={(value: any) =>
+                  onValueChange={(value: unknown) =>
                     setFormData({ ...formData, frecuencia: value })
                   }
                 >
