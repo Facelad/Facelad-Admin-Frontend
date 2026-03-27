@@ -52,6 +52,17 @@ Seguir estas recomendaciones evitará errores difíciles de reproducir y mantend
 
 ### Comandos disponibles (en `/facelad`)
 
+> **Nota importante:**
+>
+> Antes de ejecutar cualquier comando (`npm run lint`, `npm run test`, etc.) dentro de la carpeta `/facelad`, asegúrate de haber corrido:
+>
+> ```sh
+> cd facelad
+> npm install
+> ```
+>
+> Esto instalará todas las dependencias necesarias para que los scripts funcionen correctamente.
+
 - `npm run lint`: Ejecuta eslint sobre todo el proyecto.
 - `npm run test`: Ejecuta los tests con Vitest.
 - `npm run coverage`: Ejecuta los tests y muestra el reporte de cobertura.
