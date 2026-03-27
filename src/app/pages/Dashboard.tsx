@@ -144,7 +144,7 @@ export function Dashboard() {
                   dataKey="ingresos"
                   stroke="#54EBA3"
                   strokeWidth={2}
-                  dot={{ key: (entry: unknown, index: number) => `dot-${(entry as { id: string }).id}` }}
+                  dot={{ key: (entry: unknown) => `dot-${(entry as { id: string }).id}` }}
                 />
               </LineChart>
             </ResponsiveContainer>
