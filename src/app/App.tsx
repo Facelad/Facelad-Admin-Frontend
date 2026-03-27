@@ -1,12 +1,32 @@
-import { RouterProvider } from "react-router";
-import { router } from "./routes";
-import { Toaster } from "./components/ui/sonner";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import LoginScenario from "./pages/LoginScenario";
+import RegisterScenario from "./pages/RegisterScenario";
+import DashboardScenario from "./pages/DashboardScenario";
 
-export default function App() {
+function PrivateRoute({ children }: { children: JSX.Element }) {
+  const token = localStorage.getItem("token");
+  return token ? children : <Navigate to="/login" />;
+}
+
+function App() {
   return (
-    <>
-      <RouterProvider router={router} />
-      <Toaster />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/login" element={<LoginScenario />} />
+        <Route path="/register" element={<RegisterScenario />} />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <DashboardScenario />
+            </PrivateRoute>
+          }
+        />
+        <Route path="*" element={<Navigate to="/login" />} />
+      </Routes>
+    </Router>
   );
 }
+
+export default App;
