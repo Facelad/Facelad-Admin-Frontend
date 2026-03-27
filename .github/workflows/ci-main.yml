@@ -9,9 +9,7 @@ on:
 jobs:
   lint-and-test:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./facelad
+    # Ejecutar desde la raíz
     steps:
       - uses: actions/checkout@v4
       - name: Setup Node.js
