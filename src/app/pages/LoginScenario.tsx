@@ -44,6 +44,15 @@ const LoginScenario: React.FC = () => {
         <button type="submit" disabled={loading} className="w-full py-2 rounded bg-blue-600 text-white hover:bg-blue-700">
           {loading ? "Ingresando..." : "Ingresar"}
         </button>
+
+        {/* Botón para ir al registro */}
+        <button
+          type="button"
+          onClick={() => navigate("/register")}
+          className="w-full mt-4 py-2 rounded bg-gray-200 text-gray-800 hover:bg-gray-300"
+        >
+          ¿No tienes cuenta? Regístrate aquí
+        </button>
       </form>
     </div>
   );
