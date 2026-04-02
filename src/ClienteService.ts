@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Cliente } from "../type"; // ruta correcta a src/type.ts
+import { Cliente } from "./type"; // ruta correcta a src/type.ts
 
 const API_CORE = import.meta.env.VITE_API_CORE;
 

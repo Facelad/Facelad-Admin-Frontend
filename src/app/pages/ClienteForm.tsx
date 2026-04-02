@@ -1,51 +1,60 @@
 import React, { useState } from "react";
+import { mockClientes } from "../data/mockData";
 
 interface Cliente {
-  rutEmpresa: string;
-  rutCliente: string;
+  id: string;
   nombre: string;
+  rut: string;
   correo: string;
   telefono: string;
+  empresa: string;
+  estado: string;
 }
 
-interface Props {
-  onSave: (cliente: Cliente) => void;
-}
-
-const ClienteForm: React.FC<Props> = ({ onSave }) => {
-  const [form, setForm] = useState<Cliente>({
-    rutEmpresa: "",
-    rutCliente: "",
-    nombre: "",
-    correo: "",
-    telefono: "",
-  });
+export function ClienteForm({ cliente }: { cliente: Cliente }) {
+  const [formData, setFormData] = useState(cliente);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Validaciones simples
-    if (!form.correo.includes("@")) {
-      alert("Correo inválido");
-      return;
-    }
-    onSave(form);
-    setForm({ rutEmpresa: "", rutCliente: "", nombre: "", correo: "", telefono: "" });
+    if (!window.confirm("¿Confirmar cambios en el cliente?")) return;
+
+    // Aquí iría la llamada al backend con formData
+    console.log("Cliente actualizado:", formData);
+    alert("Datos actualizados correctamente");
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 bg-white p-4 rounded shadow">
-      <input name="rutEmpresa" value={form.rutEmpresa} onChange={handleChange} placeholder="RUT Empresa" className="border p-2 w-full" />
-      <input name="rutCliente" value={form.rutCliente} onChange={handleChange} placeholder="RUT Cliente" className="border p-2 w-full" />
-      <input name="nombre" value={form.nombre} onChange={handleChange} placeholder="Nombre" className="border p-2 w-full" />
-      <input name="correo" value={form.correo} onChange={handleChange} placeholder="Correo" className="border p-2 w-full" />
-      <input name="telefono" value={form.telefono} onChange={handleChange} placeholder="Teléfono" className="border p-2 w-full" />
-      <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">Guardar</button>
+    <form onSubmit={handleSubmit} className="space-y-4 p-6 border rounded">
+      <h2 className="text-xl font-bold">Editar Cliente</h2>
+
+      <input
+        type="text"
+        name="correo"
+        value={formData.correo}
+        onChange={handleChange}
+        placeholder="Correo electrónico"
+        className="border rounded px-3 py-2 w-full"
+      />
+
+      <input
+        type="text"
+        name="telefono"
+        value={formData.telefono}
+        onChange={handleChange}
+        placeholder="Teléfono"
+        className="border rounded px-3 py-2 w-full"
+      />
+
+      <button
+        type="submit"
+        className="bg-blue-600 text-white px-4 py-2 rounded"
+      >
+        Guardar Cambios
+      </button>
     </form>
   );
-};
-
-export default ClienteForm;
+}
