@@ -1,0 +1,2 @@
+VITE_API_AUTH=https://facelad-admin-backend-auth.onrender.com
+VITE_API_CORE=https://facelad-admin-backend-core.onrender.com

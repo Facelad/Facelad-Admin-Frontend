@@ -1,11 +1,13 @@
-import { Cliente, Servicio, PlantillaCobranza, Cobro } from "../types";
+import type { Cliente, Servicio, PlantillaCobranza, Cobro } from "type";
 
 export const mockClientes: Cliente[] = [
   {
     id: "1",
+    rutEmpresa: "76.123.456-7",
+    rutCliente: "12.345.678-9",
     nombre: "Juan Pérez",
     empresa: "Tech Solutions SpA",
-    email: "juan.perez@techsolutions.cl",
+    correo: "juan.perez@techsolutions.cl",
     telefono: "+56 9 1234 5678",
     direccion: "Av. Providencia 1234, Santiago",
     fechaRegistro: "2024-01-15",
@@ -13,9 +15,11 @@ export const mockClientes: Cliente[] = [
   },
   {
     id: "2",
+    rutEmpresa: "77.234.567-8",
+    rutCliente: "23.456.789-0",
     nombre: "María González",
     empresa: "Innovatech Ltda",
-    email: "maria.gonzalez@innovatech.cl",
+    correo: "maria.gonzalez@innovatech.cl",
     telefono: "+56 9 8765 4321",
     direccion: "Av. Apoquindo 5678, Las Condes",
     fechaRegistro: "2024-02-20",
@@ -23,9 +27,11 @@ export const mockClientes: Cliente[] = [
   },
   {
     id: "3",
+    rutEmpresa: "78.345.678-9",
+    rutCliente: "34.567.890-1",
     nombre: "Carlos Rodríguez",
     empresa: "Digital Marketing Pro",
-    email: "carlos@digitalmarketing.cl",
+    correo: "carlos@digitalmarketing.cl",
     telefono: "+56 9 5555 1234",
     direccion: "Calle Principal 890, Viña del Mar",
     fechaRegistro: "2024-03-10",
@@ -33,9 +39,11 @@ export const mockClientes: Cliente[] = [
   },
   {
     id: "4",
+    rutEmpresa: "79.456.789-0",
+    rutCliente: "45.678.901-2",
     nombre: "Ana Martínez",
     empresa: "Startup Ventures",
-    email: "ana.martinez@startup.cl",
+    correo: "ana.martinez@startup.cl",
     telefono: "+56 9 9999 8888",
     direccion: "Av. Libertador 456, Santiago",
     fechaRegistro: "2023-12-05",
