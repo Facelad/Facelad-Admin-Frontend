@@ -1,0 +1,40 @@
+import type { Cliente } from "../../type";
+
+export const mockClientes: Cliente[] = [
+  {
+    id: "cl1",
+    rutEmpresa: "76.543.210-9",
+    rutCliente: "",
+    nombre: "Empresa Alfa",
+    empresa: "Empresa Alfa",
+    correo: "contacto@alfa.cl",
+    telefono: "+56 9 1234 5678",
+    direccion: "",
+    fechaRegistro: "",
+    estado: "activo",
+  },
+  {
+    id: "cl2",
+    rutEmpresa: "",
+    rutCliente: "12.345.678-5",
+    nombre: "Cliente Beta",
+    empresa: "Cliente Beta",
+    correo: "beta@correo.cl",
+    telefono: "+56 9 8765 4321",
+    direccion: "",
+    fechaRegistro: "",
+    estado: "activo",
+  },
+  {
+    id: "cl3",
+    rutEmpresa: "",
+    rutCliente: "98.765.432-1",
+    nombre: "Startup Gamma",
+    empresa: "Startup Gamma",
+    correo: "gamma@startup.cl",
+    telefono: "+56 9 1111 2222",
+    direccion: "",
+    fechaRegistro: "",
+    estado: "inactivo",
+  },
+];
