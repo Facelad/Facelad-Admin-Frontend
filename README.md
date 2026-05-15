@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
   # Admin Dashboard for Digital Services
 
@@ -82,3 +83,9 @@ El flujo asegura calidad y despliegues controlados en producción.
   Run `npm i` to install the dependencies.
 
   Run `npm run dev` to start the development server.
+=======
+# FACELAD
+
+FACELAD es una plataforma web inspirada en sistemas modernos como GoDaddy.
+Permite gestionar proyectos web, clientes, pagos y seguimiento de avances.
+>>>>>>> 64c515c (Proyecto inicial FACELAD)
