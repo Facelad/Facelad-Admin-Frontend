@@ -1,149 +1,506 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MiEmpresa - Panel</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MiEmpresa | Dashboard Premium</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- ICONOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <!-- FUENTE -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
+
 <body>
+
+  <!-- EFECTOS -->
+  <div class="bg-grid"></div>
+  <div class="floating-circle one"></div>
+  <div class="floating-circle two"></div>
+
+  <!-- HEADER -->
   <header class="site-header">
-    <div class="logo">MiEmpresa</div>
+
+    <div class="logo">
+      <i class="fa-solid fa-layer-group"></i>
+      MiEmpresa
+    </div>
+
     <nav class="main-nav">
-      <a href="#">Servicios</a>
-      <a href="#">Precios</a>
-      <a href="#clientes">Clientes</a>
-      <a href="#sugerencias">Sugerencias</a>
+      <a href="#dashboard"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+      <a href="#clientes"><i class="fa-solid fa-users"></i> Clientes</a>
+      <a href="#sugerencias"><i class="fa-solid fa-lightbulb"></i> Ideas</a>
+      <a href="#"><i class="fa-solid fa-gear"></i> Configuración</a>
     </nav>
-    <div class="user-area">Admin</div>
+
+    <div class="user-area">
+      <img src="https://i.pravatar.cc/100" alt="">
+      <span>Administrador</span>
+    </div>
+
   </header>
 
+  <!-- MAIN -->
   <main class="container">
+
+    <!-- HERO -->
     <section class="hero">
-      <h1>Crea, publica y gestiona sitios web fácilmente</h1>
-      <p>Hosting, dominios y soporte técnico en un solo lugar.</p>
-      <button class="cta">Comenzar</button>
+
+      <div class="hero-text">
+        <span class="badge">
+          🚀 Plataforma Inteligente 2026
+        </span>
+
+        <h1>
+          Administra tus clientes,
+          pagos y sugerencias
+          desde un solo lugar.
+        </h1>
+
+        <p>
+          Plataforma futurista para empresas modernas.
+          Gestiona clientes, ingresos, soporte y métricas
+          con una interfaz única y elegante.
+        </p>
+
+        <div class="hero-buttons">
+          <button class="cta">
+            <i class="fa-solid fa-rocket"></i>
+            Empezar ahora
+          </button>
+
+          <button class="secondary-btn">
+            <i class="fa-solid fa-circle-play"></i>
+            Ver demo
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <div class="dashboard-preview">
+
+          <div class="preview-card">
+            <i class="fa-solid fa-wallet"></i>
+            <h3>$12.540</h3>
+            <p>Ingresos</p>
+          </div>
+
+          <div class="preview-card">
+            <i class="fa-solid fa-users"></i>
+            <h3>320</h3>
+            <p>Clientes</p>
+          </div>
+
+          <div class="preview-card">
+            <i class="fa-solid fa-chart-simple"></i>
+            <h3>98%</h3>
+            <p>Crecimiento</p>
+          </div>
+
+        </div>
+      </div>
+
     </section>
 
+    <!-- STATS -->
     <section id="dashboard" class="cards">
-      <div class="card">
-        <h3>Total clientes</h3>
-        <p id="totalClients">—</p>
+
+      <div class="card glow-blue">
+        <div class="card-icon">
+          <i class="fa-solid fa-users"></i>
+        </div>
+
+        <div>
+          <h3>Total clientes</h3>
+          <p id="totalClients">0</p>
+        </div>
       </div>
-      <div class="card">
-        <h3>Ingresos (mes)</h3>
-        <p id="monthlyRevenue">—</p>
+
+      <div class="card glow-purple">
+        <div class="card-icon">
+          <i class="fa-solid fa-money-bill-trend-up"></i>
+        </div>
+
+        <div>
+          <h3>Ingresos</h3>
+          <p id="monthlyRevenue">$0</p>
+        </div>
       </div>
-      <div class="card">
-        <h3>Pendientes de pago</h3>
-        <p id="pendingCount">—</p>
+
+      <div class="card glow-green">
+        <div class="card-icon">
+          <i class="fa-solid fa-clock"></i>
+        </div>
+
+        <div>
+          <h3>Pendientes</h3>
+          <p id="pendingCount">0</p>
+        </div>
       </div>
+
     </section>
 
+    <!-- CLIENTES -->
     <section id="clientes" class="panel">
-      <h2>Clientes</h2>
+
+      <div class="section-title">
+        <h2>
+          <i class="fa-solid fa-users"></i>
+          Clientes
+        </h2>
+      </div>
+
       <div class="controls">
-        <input id="searchClient" placeholder="Buscar cliente..." />
-        <button onclick="showAll()">Mostrar todos</button>
+
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input id="searchClient" placeholder="Buscar cliente..."/>
+        </div>
+
+        <button class="modern-btn" onclick="showAll()">
+          Mostrar todos
+        </button>
+
       </div>
+
       <div class="lists">
+
+        <!-- PAGADOS -->
         <div class="list">
-          <h3>Pagaron</h3>
+
+          <div class="list-header paid">
+            <i class="fa-solid fa-circle-check"></i>
+            Pagaron
+          </div>
+
           <ul id="paidList"></ul>
+
         </div>
+
+        <!-- NO PAGADOS -->
         <div class="list">
-          <h3>No han pagado</h3>
+
+          <div class="list-header unpaid">
+            <i class="fa-solid fa-circle-xmark"></i>
+            No han pagado
+          </div>
+
           <ul id="unpaidList"></ul>
+
         </div>
+
       </div>
+
     </section>
 
+    <!-- SUGERENCIAS -->
     <section id="sugerencias" class="panel">
-      <h2>Sugerencias de clientes</h2>
+
+      <div class="section-title">
+        <h2>
+          <i class="fa-solid fa-lightbulb"></i>
+          Sugerencias
+        </h2>
+      </div>
+
       <form id="suggestionForm" class="suggestion-form">
-        <input id="suggClient" placeholder="Nombre cliente" required />
-        <input id="suggText" placeholder="Sugerencia" required />
+
+        <input
+          id="suggClient"
+          placeholder="Nombre cliente"
+          required
+        />
+
+        <input
+          id="suggText"
+          placeholder="Escribe una sugerencia..."
+          required
+        />
+
         <select id="suggPriority">
-          <option value="baja">Baja</option>
-          <option value="media" selected>Media</option>
-          <option value="alta">Alta</option>
+          <option value="baja">🟢 Baja</option>
+          <option value="media" selected>🟡 Media</option>
+          <option value="alta">🔴 Alta</option>
         </select>
-        <button type="submit">Enviar</button>
+
+        <button type="submit" class="cta">
+          <i class="fa-solid fa-paper-plane"></i>
+          Enviar
+        </button>
+
       </form>
+
       <ul id="suggestionsList" class="suggestions"></ul>
+
     </section>
+
   </main>
 
+  <!-- FOOTER -->
   <footer class="site-footer">
-    <small>© MiEmpresa 2026</small>
+
+    <div class="footer-content">
+
+      <div>
+        <h3>MiEmpresa</h3>
+        <p>Dashboard empresarial futurista.</p>
+      </div>
+
+      <div class="socials">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-discord"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+      </div>
+
+    </div>
+
+    <small>
+      © 2026 MiEmpresa — Todos los derechos reservados
+    </small>
+
   </footer>
 
-<script>
-  // Datos de ejemplo
-  const clients = [
-    {id:1,name:'Empresa A',paid:true,amount:49},
-    {id:2,name:'Cliente B',paid:false,amount:49},
-    {id:3,name:'Marca C',paid:true,amount:99},
-    {id:4,name:'Startup D',paid:false,amount:29}
-  ];
-  const suggestions = [
-    {id:1,client:'Empresa A',text:'Agregar integración con Zapier',priority:'media',done:false},
-    {id:2,client:'Cliente B',text:'Mejorar el editor visual',priority:'alta',done:false}
-  ];
+  <!-- SCRIPT -->
+  <script>
 
-  // Render inicial
-  function render() {
-    document.getElementById('totalClients').textContent = clients.length;
-    const rev = clients.filter(c=>c.paid).reduce((s,c)=>s+c.amount,0);
-    document.getElementById('monthlyRevenue').textContent = '$' + rev;
-    const pending = clients.filter(c=>!c.paid).length;
-    document.getElementById('pendingCount').textContent = pending;
+    // CLIENTES
+    const clients = [
+      {
+        id:1,
+        name:'Empresa A',
+        paid:true,
+        amount:49
+      },
 
-    const paidList = document.getElementById('paidList'); paidList.innerHTML = '';
-    const unpaidList = document.getElementById('unpaidList'); unpaidList.innerHTML = '';
-    clients.forEach(c=>{
-      const li = document.createElement('li');
-      li.textContent = c.name + ' — $' + c.amount;
-      li.dataset.id = c.id;
-      (c.paid ? paidList : unpaidList).appendChild(li);
+      {
+        id:2,
+        name:'Cliente B',
+        paid:false,
+        amount:49
+      },
+
+      {
+        id:3,
+        name:'Marca C',
+        paid:true,
+        amount:99
+      },
+
+      {
+        id:4,
+        name:'Startup D',
+        paid:false,
+        amount:29
+      }
+    ];
+
+    // SUGERENCIAS
+    const suggestions = [
+      {
+        id:1,
+        client:'Empresa A',
+        text:'Agregar integración con IA',
+        priority:'alta',
+        done:false
+      },
+
+      {
+        id:2,
+        client:'Cliente B',
+        text:'Modo oscuro automático',
+        priority:'media',
+        done:false
+      }
+    ];
+
+    // RENDER
+    function render(){
+
+      // STATS
+      document.getElementById('totalClients').textContent =
+      clients.length;
+
+      const revenue =
+      clients
+      .filter(c => c.paid)
+      .reduce((sum,c)=> sum + c.amount,0);
+
+      document.getElementById('monthlyRevenue').textContent =
+      '$' + revenue;
+
+      const pending =
+      clients.filter(c => !c.paid).length;
+
+      document.getElementById('pendingCount').textContent =
+      pending;
+
+      // LISTAS
+      const paidList =
+      document.getElementById('paidList');
+
+      const unpaidList =
+      document.getElementById('unpaidList');
+
+      paidList.innerHTML = '';
+      unpaidList.innerHTML = '';
+
+      clients.forEach(client=>{
+
+        const li =
+        document.createElement('li');
+
+        li.innerHTML = `
+          <div class="client-item">
+            <div class="client-avatar">
+              ${client.name.charAt(0)}
+            </div>
+
+            <div>
+              <strong>${client.name}</strong>
+              <p>$${client.amount}</p>
+            </div>
+          </div>
+        `;
+
+        if(client.paid){
+          paidList.appendChild(li);
+        }else{
+          unpaidList.appendChild(li);
+        }
+
+      });
+
+      // SUGERENCIAS
+      const sList =
+      document.getElementById('suggestionsList');
+
+      sList.innerHTML = '';
+
+      suggestions.forEach(s => {
+
+        const li =
+        document.createElement('li');
+
+        li.className =
+        s.done ? 'done' : '';
+
+        li.innerHTML = `
+
+          <div>
+            <strong>${s.client}</strong>
+            <p>${s.text}</p>
+          </div>
+
+          <div class="sugg-right">
+
+            <span class="priority ${s.priority}">
+              ${s.priority}
+            </span>
+
+            <button onclick="toggleDone(${s.id})">
+              ${s.done ? '↩' : '✔'}
+            </button>
+
+          </div>
+
+        `;
+
+        sList.appendChild(li);
+
+      });
+
+    }
+
+    // TOGGLE
+    function toggleDone(id){
+
+      const item =
+      suggestions.find(s => s.id === id);
+
+      if(item){
+        item.done = !item.done;
+      }
+
+      render();
+
+    }
+
+    // FORM
+    document
+    .getElementById('suggestionForm')
+    .addEventListener('submit',e=>{
+
+      e.preventDefault();
+
+      const client =
+      document.getElementById('suggClient')
+      .value.trim();
+
+      const text =
+      document.getElementById('suggText')
+      .value.trim();
+
+      const priority =
+      document.getElementById('suggPriority')
+      .value;
+
+      if(!client || !text) return;
+
+      suggestions.unshift({
+        id:Date.now(),
+        client,
+        text,
+        priority,
+        done:false
+      });
+
+      e.target.reset();
+
+      render();
+
     });
 
-    const sList = document.getElementById('suggestionsList'); sList.innerHTML = '';
-    suggestions.forEach(s=>{
-      const li = document.createElement('li');
-      li.innerHTML = '<strong>['+s.priority+']</strong> <em>'+s.client+'</em>: '+s.text +
-        ' <button onclick="toggleDone('+s.id+')">'+(s.done?'Reabrir':'Marcar lista')+'</button>';
-      sList.appendChild(li);
-    });
-  }
+    // BUSCADOR
+    document
+    .getElementById('searchClient')
+    .addEventListener('input',e=>{
 
-  function toggleDone(id){
-    const s = suggestions.find(x=>x.id===id);
-    if(s) s.done = !s.done;
+      const q =
+      e.target.value.toLowerCase();
+
+      document
+      .querySelectorAll('#clientes ul li')
+      .forEach(li=>{
+
+        li.style.display =
+        li.textContent.toLowerCase()
+        .includes(q)
+        ? ''
+        : 'none';
+
+      });
+
+    });
+
+    // MOSTRAR TODO
+    function showAll(){
+
+      document
+      .getElementById('searchClient')
+      .value='';
+
+      render();
+
+    }
+
+    // INICIAR
     render();
-  }
 
-  document.getElementById('suggestionForm').addEventListener('submit', e=>{
-    e.preventDefault();
-    const client = document.getElementById('suggClient').value.trim();
-    const text = document.getElementById('suggText').value.trim();
-    const priority = document.getElementById('suggPriority').value;
-    if(!client||!text) return;
-    suggestions.unshift({id:Date.now(),client,text,priority,done:false});
-    e.target.reset();
-    render();
-  });
+  </script>
 
-  document.getElementById('searchClient').addEventListener('input', e=>{
-    const q = e.target.value.toLowerCase();
-    document.querySelectorAll('#clientes ul li').forEach(li=>{
-      li.style.display = li.textContent.toLowerCase().includes(q) ? '' : 'none';
-    });
-  });
-
-  function showAll(){ document.getElementById('searchClient').value=''; render(); }
-
-  render();
-</script>
 </body>
 </html>
