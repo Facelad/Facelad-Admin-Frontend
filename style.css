@@ -4,22 +4,30 @@ body {
   font-family: 'Poppins', sans-serif;
   display: flex;
   height: 100vh;
+  background-color: #f4f6f9;
 }
 
+/* Sidebar */
 .sidebar {
-  width: 220px;
-  background: #1e90ff;
+  width: 240px;
+  background: linear-gradient(180deg, #1e90ff, #0066cc);
   color: #fff;
-  padding: 1rem;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .sidebar h2 {
   margin-bottom: 2rem;
+  font-size: 1.6rem;
+  font-weight: 600;
 }
 
 .sidebar ul {
   list-style: none;
   padding: 0;
+  width: 100%;
 }
 
 .sidebar ul li {
@@ -29,17 +37,23 @@ body {
 .sidebar ul li a {
   color: #fff;
   text-decoration: none;
-  transition: color 0.3s;
+  font-weight: 500;
+  display: block;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background 0.3s;
 }
 
 .sidebar ul li a:hover {
-  color: #dcdcdc;
+  background: rgba(255, 255, 255, 0.2);
 }
 
+/* Main content */
 .main-content {
   flex: 1;
-  background: #f4f6f9;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
@@ -50,15 +64,17 @@ header {
 
 header h1 {
   margin: 0;
+  color: #333;
 }
 
 header button {
   background: #1e90ff;
   color: #fff;
   border: none;
-  padding: 0.6rem 1rem;
+  padding: 0.7rem 1.2rem;
   border-radius: 6px;
   cursor: pointer;
+  font-weight: 500;
   transition: background 0.3s;
 }
 
@@ -66,9 +82,10 @@ header button:hover {
   background: #0066cc;
 }
 
+/* Cards */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
 }
@@ -77,13 +94,19 @@ header button:hover {
   background: #fff;
   padding: 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
 }
 
 .card h3 {
   margin-bottom: 1rem;
   color: #333;
+  font-weight: 600;
 }
 
 .card p {
