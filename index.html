@@ -1,44 +1,149 @@
-<!-- dashboard.html -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Facelad | Dashboard</title>
-  <link rel="stylesheet" href="dashboard.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MiEmpresa - Panel</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="sidebar">
-    <h2>Facelad</h2>
-    <ul>
-      <li><a href="#">Inicio</a></li>
-      <li><a href="#">Clientes</a></li>
-      <li><a href="#">Deudas</a></li>
-      <li><a href="#">Reportes</a></li>
-      <li><a href="#">Configuración</a></li>
-    </ul>
-  </div>
+  <header class="site-header">
+    <div class="logo">MiEmpresa</div>
+    <nav class="main-nav">
+      <a href="#">Servicios</a>
+      <a href="#">Precios</a>
+      <a href="#clientes">Clientes</a>
+      <a href="#sugerencias">Sugerencias</a>
+    </nav>
+    <div class="user-area">Admin</div>
+  </header>
 
-  <div class="main-content">
-    <header>
-      <h1>Panel de Control</h1>
-      <button>+ Nuevo Cliente</button>
-    </header>
+  <main class="container">
+    <section class="hero">
+      <h1>Crea, publica y gestiona sitios web fácilmente</h1>
+      <p>Hosting, dominios y soporte técnico en un solo lugar.</p>
+      <button class="cta">Comenzar</button>
+    </section>
 
-    <section class="cards">
+    <section id="dashboard" class="cards">
       <div class="card">
-        <h3>Total Clientes</h3>
-        <p>120</p>
+        <h3>Total clientes</h3>
+        <p id="totalClients">—</p>
       </div>
       <div class="card">
-        <h3>Deudas Activas</h3>
-        <p>$45,000</p>
+        <h3>Ingresos (mes)</h3>
+        <p id="monthlyRevenue">—</p>
       </div>
       <div class="card">
-        <h3>Pagos Recientes</h3>
-        <p>$12,500</p>
+        <h3>Pendientes de pago</h3>
+        <p id="pendingCount">—</p>
       </div>
     </section>
-  </div>
+
+    <section id="clientes" class="panel">
+      <h2>Clientes</h2>
+      <div class="controls">
+        <input id="searchClient" placeholder="Buscar cliente..." />
+        <button onclick="showAll()">Mostrar todos</button>
+      </div>
+      <div class="lists">
+        <div class="list">
+          <h3>Pagaron</h3>
+          <ul id="paidList"></ul>
+        </div>
+        <div class="list">
+          <h3>No han pagado</h3>
+          <ul id="unpaidList"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="sugerencias" class="panel">
+      <h2>Sugerencias de clientes</h2>
+      <form id="suggestionForm" class="suggestion-form">
+        <input id="suggClient" placeholder="Nombre cliente" required />
+        <input id="suggText" placeholder="Sugerencia" required />
+        <select id="suggPriority">
+          <option value="baja">Baja</option>
+          <option value="media" selected>Media</option>
+          <option value="alta">Alta</option>
+        </select>
+        <button type="submit">Enviar</button>
+      </form>
+      <ul id="suggestionsList" class="suggestions"></ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>© MiEmpresa 2026</small>
+  </footer>
+
+<script>
+  // Datos de ejemplo
+  const clients = [
+    {id:1,name:'Empresa A',paid:true,amount:49},
+    {id:2,name:'Cliente B',paid:false,amount:49},
+    {id:3,name:'Marca C',paid:true,amount:99},
+    {id:4,name:'Startup D',paid:false,amount:29}
+  ];
+  const suggestions = [
+    {id:1,client:'Empresa A',text:'Agregar integración con Zapier',priority:'media',done:false},
+    {id:2,client:'Cliente B',text:'Mejorar el editor visual',priority:'alta',done:false}
+  ];
+
+  // Render inicial
+  function render() {
+    document.getElementById('totalClients').textContent = clients.length;
+    const rev = clients.filter(c=>c.paid).reduce((s,c)=>s+c.amount,0);
+    document.getElementById('monthlyRevenue').textContent = '$' + rev;
+    const pending = clients.filter(c=>!c.paid).length;
+    document.getElementById('pendingCount').textContent = pending;
+
+    const paidList = document.getElementById('paidList'); paidList.innerHTML = '';
+    const unpaidList = document.getElementById('unpaidList'); unpaidList.innerHTML = '';
+    clients.forEach(c=>{
+      const li = document.createElement('li');
+      li.textContent = c.name + ' — $' + c.amount;
+      li.dataset.id = c.id;
+      (c.paid ? paidList : unpaidList).appendChild(li);
+    });
+
+    const sList = document.getElementById('suggestionsList'); sList.innerHTML = '';
+    suggestions.forEach(s=>{
+      const li = document.createElement('li');
+      li.innerHTML = '<strong>['+s.priority+']</strong> <em>'+s.client+'</em>: '+s.text +
+        ' <button onclick="toggleDone('+s.id+')">'+(s.done?'Reabrir':'Marcar lista')+'</button>';
+      sList.appendChild(li);
+    });
+  }
+
+  function toggleDone(id){
+    const s = suggestions.find(x=>x.id===id);
+    if(s) s.done = !s.done;
+    render();
+  }
+
+  document.getElementById('suggestionForm').addEventListener('submit', e=>{
+    e.preventDefault();
+    const client = document.getElementById('suggClient').value.trim();
+    const text = document.getElementById('suggText').value.trim();
+    const priority = document.getElementById('suggPriority').value;
+    if(!client||!text) return;
+    suggestions.unshift({id:Date.now(),client,text,priority,done:false});
+    e.target.reset();
+    render();
+  });
+
+  document.getElementById('searchClient').addEventListener('input', e=>{
+    const q = e.target.value.toLowerCase();
+    document.querySelectorAll('#clientes ul li').forEach(li=>{
+      li.style.display = li.textContent.toLowerCase().includes(q) ? '' : 'none';
+    });
+  });
+
+  function showAll(){ document.getElementById('searchClient').value=''; render(); }
+
+  render();
+</script>
 </body>
 </html>
